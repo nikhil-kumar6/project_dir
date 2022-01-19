@@ -192,3 +192,58 @@ t an array of combatants and keep the Lonely Mountain from falling into the hand
 s of a rising darkness."
 }
 >
+
+update command:
+
+1.db.movies.updateOne({title:"The Hobbit: An Unexpected Journey"},{$set:{synopsis: "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug."}})
+
+2.db.movies.updateOne({title:"The Hobbit: The Desolation of Smaug"},{$set:{synopsis:"The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring."}})
+
+3.db.movies.updateOne({title:"Pulp Fiction"},{$push:{actors:"Samuel L. Jackson"}}
+
+
+search:
+
+1.db.movies.createIndex({title:"text",writer:"text",franchise:"text",synopsis:"text"}
+db.movies.find({$text:{$search:"Biblo"}})
+
+2.db.movies.find({$text: {$search: "Gandalf"}})
+
+3.db.movies.find({$text: {$search: "Bilbo -Gandalf"}})
+
+4.db.movies.find({$text: {$search: "dwarves hobbit"}})
+
+5.db.movies.find({$text: {$search: "gold dragon"}})
+
+delete:
+
+1.db.movies.remove({title: "Pee Wee Herman's Big Adventure"})
+
+2.db.movies.remove({title: "Avatar"})
+
+3.db.users.insertMany([{username:"GoodGuyGreg",first_name:"Good Guy",last_name:"Greg"},{username:"ScumbagSteve",full_name:"",first:"Scumbag",last:"Steve"}])
+
+4.db.posts.insertMany([{username : "GoodGuyGreg", title : "Passes out at party", body : "Wakes up early and cleans house"},{username : "GoodGuyGreg", title : "Steals your identity", body : "Raises your credit score"},{username : "GoodGuyGreg", title : "Reports a bug in your code", body : "Sends you a Pull Request"},{username : "ScumbagSteve", title : "Borrows something", body : "Sells it"},{username : "ScumbagSteve", title : "Borrows everything", body : "The end"},{username : "ScumbagSteve", title : "Forks your repo on github" ,body :"Sets to private"}])
+
+5.db.comments.insertMany([{username : "GoodGuyGreg",comment : "Hope you got a good deal!",post :"61e5c67bc04247c55c3dff83"},{username : "GoodGuyGreg",comment : "What's mine is yours!",post : "61e5c67bc04247c55c3dff84"},{username : "GoodGuyGreg",comment : "Don't violate the licensing agreement!",post : "61e5c67bc04247c55c3dff85"},{username : "ScumbagSteve",comment : "It still isn't clean",post : "61e5c67bc04247c55c3dff80"},{username : "ScumbagSteve",comment : "Denied your PR cause I found a hack",post : "61e5c67bc04247c55c3dff82"}])
+
+
+quering related to operations:
+
+1.db.users.find().pretty()
+
+2.db.posts.find().pretty
+
+3.db.posts.find({username:"GoodGuyGreg"}).pretty()
+
+4.db.posts.find({username: "ScumbagSteve"}).pretty()
+
+5.db.comments.find().pretty()
+
+6.db.comments.find({username: "GoodGuyGreg"})
+
+7.db.comments.find({username: "ScumbagSteve"})
+
+8.db.comments.find({post :"61e5c67bc04247c55c3dff82"}).pretty
+
+9.
